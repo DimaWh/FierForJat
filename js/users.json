@@ -1,0 +1,50 @@
+// ===== DARK/LIGHT MODE =====
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') {
+    document.body.classList.add('light');
+    if(themeToggle) themeToggle.textContent = '☀️';
+}
+
+if(themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        const isLight = document.body.classList.contains('light');
+        themeToggle.textContent = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+}
+
+// ===== LANGUAGE SWITCHER =====
+const langs = ['RO', 'EN', 'RU'];
+let currentLang = localStorage.getItem('lang') || 'RO';
+const langToggle = document.getElementById('langToggle');
+
+function applyLang(lang) {
+    const key = lang.toLowerCase();
+    document.querySelectorAll('[data-ro]').forEach(el => {
+        if(el.dataset[key]) el.textContent = el.dataset[key];
+    });
+    if(langToggle) langToggle.textContent = lang;
+    localStorage.setItem('lang', lang);
+}
+
+applyLang(currentLang);
+
+if(langToggle) {
+    langToggle.addEventListener('click', () => {
+        const idx = langs.indexOf(currentLang);
+        currentLang = langs[(idx + 1) % langs.length];
+        applyLang(currentLang);
+    });
+}
+
+// ===== AUTO HIDE MESSAGES =====
+const msgs = document.querySelectorAll('.msg');
+msgs.forEach(msg => {
+    setTimeout(() => {
+        msg.style.transition = 'opacity 0.5s';
+        msg.style.opacity = '0';
+        setTimeout(() => msg.remove(), 500);
+    }, 3000);
+});
