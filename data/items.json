@@ -1,4 +1,13 @@
 {
-    "messages": [],
+    "messages": [
+        {
+            "id": "6a1a747d1f8c1",
+            "name": "Michael Storen",
+            "email": "alexandruxx77@gmail.com",
+            "subject": "Facturare",
+            "message": "ma doare pula",
+            "date": "2026-05-30 07:24:13"
+        }
+    ],
     "orders": []
 }
