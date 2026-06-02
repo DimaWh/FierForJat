@@ -2,6 +2,9 @@
 require_once 'functions.php';
 
 function registerUser($username, $email, $password) {
+    $username = trim($username);
+    $email = strtolower(trim($email));
+
     if(empty($username) || empty($email) || empty($password)) {
         return 'Completează toate câmpurile!';
     }
@@ -12,10 +15,11 @@ function registerUser($username, $email, $password) {
         return 'Parola trebuie să aibă minim 6 caractere!';
     }
 
-    $users = readJSON('../data/users.json');
+    $usersFile = __DIR__ . '/../data/users.json';
+    $users = readJSON($usersFile);
 
     foreach($users as $u) {
-        if($u['email'] === $email) return 'Email-ul este deja folosit!';
+        if(strtolower($u['email']) === $email) return 'Email-ul este deja folosit!';
         if($u['username'] === $username) return 'Username-ul este deja folosit!';
     }
 
@@ -27,19 +31,22 @@ function registerUser($username, $email, $password) {
         'created_at' => date('Y-m-d H:i:s')
     ];
 
-    writeJSON('../data/users.json', $users);
+    writeJSON($usersFile, $users);
     return true;
 }
 
 function loginUser($email, $password) {
+    $email = strtolower(trim($email));
+
     if(empty($email) || empty($password)) {
         return 'Completează toate câmpurile!';
     }
 
-    $users = readJSON('../data/users.json');
+    $usersFile = __DIR__ . '/../data/users.json';
+    $users = readJSON($usersFile);
 
     foreach($users as $u) {
-        if($u['email'] === $email && password_verify($password, $u['password'])) {
+        if(strtolower($u['email']) === $email && password_verify($password, $u['password'])) {
             $_SESSION['user'] = [
                 'id' => $u['id'],
                 'username' => $u['username'],

@@ -4,24 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FierForjat - Rust Server Hosting</title>
+    <title data-ro="FierForjat - Rust Server Hosting" data-en="FierForjat - Rust Server Hosting" data-ru="FierForjat - Rust Server Hosting">FierForjat - Rust Server Hosting</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="nav-logo">🔥 FierForjat</div>
+    <div class="nav-logo" data-ro="🔥 FierForjat" data-en="🔥 FierForjat" data-ru="🔥 FierForjat">🔥 FierForjat</div>
     <ul class="nav-links">
-        <li><a href="index.php">Acasă</a></li>
-        <li><a href="#plans">Planuri</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="index.php" data-ro="Acasă" data-en="Home" data-ru="Главная">Acasă</a></li>
+        <li><a href="#plans" data-ro="Planuri" data-en="Plans" data-ru="Планы">Planuri</a></li>
+        <li><a href="contact.php" data-ro="Contact" data-en="Contact" data-ru="Контакты">Contact</a></li>
         <?php if(isset($_SESSION['user'])): ?>
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="dashboard.php" data-ro="Dashboard" data-en="Dashboard" data-ru="Панель">Dashboard</a></li>
+            <li><a href="logout.php" data-ro="Logout" data-en="Logout" data-ru="Выйти">Logout</a></li>
         <?php else: ?>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="register.php" class="btn-nav">Register</a></li>
+            <li><a href="login.php" data-ro="Login" data-en="Login" data-ru="Вход">Login</a></li>
+            <li><a href="register.php" class="btn-nav" data-ro="Register" data-en="Register" data-ru="Регистрация">Register</a></li>
         <?php endif; ?>
     </ul>
     <button id="themeToggle" class="theme-toggle">🌙</button>
