@@ -16,7 +16,7 @@ $type = $_POST['type'] ?? '';
 switch($type) {
     case 'order':
         // TODO: handle server orders in next weeks
-        echo json_encode(['success' => true, 'message' => 'Comanda a fost salvată']);
+        echo json_encode(['success' => true, 'message' => 'The order has been saved']);
         break;
     default:
         echo json_encode(['success' => false, 'message' => 'Tip necunoscut']);

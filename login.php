@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,21 +32,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <nav class="navbar">
     <a href="index.php" class="nav-logo">🔥 FierForjat</a>
     <ul class="nav-links">
-        <li><a href="index.php">Acasă</a></li>
-        <li><a href="index.php#plans">Planuri</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="index.php#plans">Plans</a></li>
         <li><a href="contact.php">Contact</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="register.php" class="btn-nav">Register</a></li>
     </ul>
-    <button id="themeToggle" class="theme-toggle">🌙</button>
-    <button id="langToggle" class="lang-toggle">RO</button>
-</nav>
+    <button id="themeToggle" class="theme-toggle">🌙</button></nav>
 
 <div class="form-page">
     <div class="form-box">
         <div class="form-logo">🔥</div>
         <h2>Login</h2>
-        <p class="form-subtitle">Bine ai revenit!</p>
+        <p class="form-subtitle">Welcome back!</p>
 
         <?php if($error): ?>
             <div class="msg error"><?= htmlspecialchars($error) ?></div>
@@ -55,21 +53,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="login.php">
             <div class="form-group">
                 <label>EMAIL</label>
-                <input type="email" name="email" placeholder="email@exemplu.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                <input type="email" name="email" placeholder="email@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
             </div>
             <div class="form-group">
-                <label>PAROLĂ</label>
+                <label>PASSWORD</label>
                 <div class="input-wrapper">
                     <input type="password" name="password" id="passInput" placeholder="••••••••" required>
                     <button type="button" class="toggle-pass" onclick="togglePass()">👁️</button>
                 </div>
             </div>
-            <button type="submit" class="btn-submit">INTRĂ</button>
+            <button type="submit" class="btn-submit">LOGIN</button>
         </form>
 
-        <div class="form-link">
-            Nu ai cont? <a href="register.php">Înregistrează-te</a>
-        </div>
+        <div class="form-link">Don't have an account? <a href="register.php">Register</a></div>
     </div>
 </div>
 

@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "id": "6a1e966957ba6",
+        "username": "amongusplayer",
+        "email": "yeah@govgmail.com",
+        "password": "$2y$10$EiWR8rv0l6iI1tmP3li7luVtzDscrG4jHlqnsYEH5fEDcg\/WgY9gm",
+        "created_at": "2026-06-02 10:38:01"
+    },
+    {
+        "id": "6a1fcd9d7865b",
+        "username": "yeahlol123",
+        "email": "alexandruxx77@gmail.com",
+        "password": "$2y$10$0hL9O7jRacGSd7uPfgFws.kTzfDu5agDShFI\/.AnUI6ZIfk29XMl2",
+        "created_at": "2026-06-03 08:45:49"
+    }
+]
