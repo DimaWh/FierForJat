@@ -39,19 +39,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <nav class="navbar">
     <a href="index.php" class="nav-logo">🔥 FierForjat</a>
     <ul class="nav-links">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="index.php#plans">Plans</a></li>
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php" class="btn-nav">Register</a></li>
+        <li><a href="index.php" data-i18n="home">Home</a></li>
+        <li><a href="index.php#plans" data-i18n="plans">Plans</a></li>
+        <li><a href="contact.php" data-i18n="contact">Contact</a></li>
+        <li><a href="login.php" data-i18n="login">Login</a></li>
+        <li><a href="register.php" class="btn-nav" data-i18n="register">Register</a></li>
     </ul>
-    <button id="themeToggle" class="theme-toggle">🌙</button></nav>
+    <div class="nav-controls">
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+        <select id="langSelect" class="lang-toggle" aria-label="Site language">
+            <option value="en">EN</option>
+            <option value="ro">RO</option>
+            <option value="ru">RU</option>
+        </select>
+    </div>
+</nav>
 
 <div class="form-page">
     <div class="form-box">
         <div class="form-logo">🔥</div>
-        <h2>Register</h2>
-        <p class="form-subtitle">Create your free account</p>
+        <h2 data-i18n="register.title">Register</h2>
+        <p class="form-subtitle" data-i18n="register.subtitle">Create your free account</p>
 
         <?php if($error): ?>
             <div class="msg error"><?= htmlspecialchars($error) ?></div>
@@ -64,31 +72,31 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST" action="register.php">
             <div class="form-group">
-                <label>USERNAME</label>
-                <input type="text" name="username" placeholder="RustPlayer123" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required>
+                <label data-i18n="register.username">USERNAME</label>
+                <input type="text" name="username" placeholder="RustPlayer123" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required data-i18n-placeholder="register.username">
             </div>
             <div class="form-group">
-                <label>EMAIL</label>
-                <input type="email" name="email" placeholder="email@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                <label data-i18n="register.email">EMAIL</label>
+                <input type="email" name="email" placeholder="email@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required data-i18n-placeholder="register.email">
             </div>
             <div class="form-group">
-                <label>PASSWORD <span class="hint">(at least 6 characters)</span></label>
+                <label data-i18n="register.password">PASSWORD <span class="hint" data-i18n="register.passwordHint">(at least 6 characters)</span></label>
                 <div class="input-wrapper">
-                    <input type="password" name="password" id="pass1" placeholder="••••••••" required>
+                    <input type="password" name="password" id="pass1" placeholder="••••••••" required data-i18n-placeholder="login.password.placeholder">
                     <button type="button" class="toggle-pass" onclick="togglePass('pass1')">👁️</button>
                 </div>
             </div>
             <div class="form-group">
-                <label>CONFIRM PASSWORD</label>
+                <label data-i18n="register.confirmPassword">CONFIRM PASSWORD</label>
                 <div class="input-wrapper">
-                    <input type="password" name="password2" id="pass2" placeholder="••••••••" required>
+                    <input type="password" name="password2" id="pass2" placeholder="••••••••" required data-i18n-placeholder="login.password.placeholder">
                     <button type="button" class="toggle-pass" onclick="togglePass('pass2')">👁️</button>
                 </div>
             </div>
-            <button type="submit" class="btn-submit">CREATE ACCOUNT</button>
+            <button type="submit" class="btn-submit" data-i18n="register.submit">CREATE ACCOUNT</button>
         </form>
 
-        <div class="form-link">Already have an account? <a href="login.php">Log in</a></div>
+        <div class="form-link"><span data-i18n="register.haveAccount">Already have an account? </span><a href="login.php" data-i18n="register.login">Log in</a></div>
     </div>
 </div>
 

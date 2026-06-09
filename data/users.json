@@ -12,5 +12,40 @@
         "email": "alexandruxx77@gmail.com",
         "password": "$2y$10$0hL9O7jRacGSd7uPfgFws.kTzfDu5agDShFI\/.AnUI6ZIfk29XMl2",
         "created_at": "2026-06-03 08:45:49"
+    },
+    {
+        "id": "6a2841d749652",
+        "username": "Test123",
+        "email": "test123@gmail.com",
+        "password": "$2y$10$Wxqf5o3BErFS.daRrQkBP.fmqfBO3H2IGjoG7jNrhyUkYb9lrgCtO",
+        "created_at": "2026-06-09 18:39:51"
+    },
+    {
+        "id": "6a28464b6960a",
+        "username": "autoUser1781024323780",
+        "email": "auto1781024323780@example.com",
+        "password": "$2y$10$.C0vstfgvmE.Al30UaZNP.zLTGEIeVpdj78.cgNxVjvCmxf30chzS",
+        "created_at": "2026-06-09 18:58:51"
+    },
+    {
+        "id": "6a2847228703f",
+        "username": "autoUser1781024538867",
+        "email": "auto1781024538867@example.com",
+        "password": "$2y$10$FLR7hTyNCYnHBAA4ceRxeuyeQj5mm2T7zTzlkgBeFv6H\/6bpfBkk6",
+        "created_at": "2026-06-09 19:02:26"
+    },
+    {
+        "id": "6a28481f389aa",
+        "username": "autoUser1781024791637",
+        "email": "auto1781024791637@example.com",
+        "password": "$2y$10$\/oEAOMMbRbcucv\/llnjrfuMbCPSBnGckQ5Had9l8q8.Wim0lC6T\/e",
+        "created_at": "2026-06-09 19:06:39"
+    },
+    {
+        "id": "6a28484e88338",
+        "username": "autoUser1781024838846",
+        "email": "auto1781024838846@example.com",
+        "password": "$2y$10$ZyGB975yfJIdnJmQNtbXDOJC.vvgJj8RPsN3R\/n\/wjcMbXZoGDgqS",
+        "created_at": "2026-06-09 19:07:26"
     }
 ]

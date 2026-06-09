@@ -102,14 +102,19 @@ $planData = $plans[$selectedPlan];
 <nav class="navbar">
     <a href="index.php" class="nav-logo">🔥 FierForjat</a>
     <ul class="nav-links">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="index.php#plans">Plans</a></li>
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="index.php" data-i18n="home">Home</a></li>
+        <li><a href="index.php#plans" data-i18n="plans">Plans</a></li>
+        <li><a href="contact.php" data-i18n="contact">Contact</a></li>
+        <li><a href="dashboard.php" data-i18n="dashboard">Dashboard</a></li>
+        <li><a href="logout.php" data-i18n="logout">Logout</a></li>
     </ul>
     <div class="nav-controls">
         <button id="themeToggle" class="theme-toggle">🌙</button>
+        <select id="langSelect" class="lang-toggle" aria-label="Site language">
+            <option value="en">EN</option>
+            <option value="ro">RO</option>
+            <option value="ru">RU</option>
+        </select>
         <button id="hamburger" class="hamburger">☰</button>
     </div>
 </nav>
@@ -117,34 +122,32 @@ $planData = $plans[$selectedPlan];
 <section class="form-page" style="padding: 4rem 1rem;">
     <div class="form-box" style="max-width: 600px;">
         <div class="form-logo">🛒</div>
-        <h2>Order Confirmation</h2>
-        <p class="form-subtitle">Complete your Rust server order.</p>
+            <h2 data-i18n="order.heading">Order Confirmation</h2>
+            <p class="form-subtitle" data-i18n="order.subtitle">Complete your Rust server order.</p>
 
-        <?php if($error): ?>
-            <div class="msg error"><?= htmlspecialchars($error) ?></div>
-        <?php endif; ?>
+            <?php if($error): ?>
+                <div class="msg error"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
 
-        <div class="dash-section" style="margin-bottom: 1.5rem;">
-            <h2 style="margin-bottom: 1rem;">Selected plan: <?= htmlspecialchars($selectedPlan) ?></h2>
-            <p style="color: var(--text2); margin-bottom: 1rem;"><?= htmlspecialchars($planData['description']) ?></p>
-            <ul style="list-style:none; padding-left:0; color: var(--text);">
-                <li>✅ <?= $planData['slots'] ?></li>
-                <li>✅ <?= $planData['ram'] ?></li>
-                <li>✅ <?= $planData['disk'] ?></li>
-                <li>✅ DDoS Protection: <?= $planData['ddos'] ? 'Yes' : 'No' ?></li>
-                <li>✅ Support: <?= htmlspecialchars($planData['support']) ?></li>
-                <li>✅ Price: <strong><?= htmlspecialchars($planData['price']) ?>/month</strong></li>
+            <div class="dash-section" style="margin-bottom: 1.5rem;">
+                <h2 style="margin-bottom: 1rem;"><span data-i18n="order.selectedPlan">Selected plan:</span> <?= htmlspecialchars($selectedPlan) ?></h2>
+                <p style="color: var(--text2); margin-bottom: 1rem;"><?= htmlspecialchars($planData['description']) ?></p>
+                <ul style="list-style:none; padding-left:0; color: var(--text);">
+                    <li>✅ <?= $planData['slots'] ?></li>
+                    <li>✅ <?= $planData['ram'] ?></li>
+                    <li>✅ <?= $planData['disk'] ?></li>
+                    <li>✅ DDoS Protection: <?= $planData['ddos'] ? 'Yes' : 'No' ?></li>
+                    <li>✅ Support: <?= htmlspecialchars($planData['support']) ?></li>
+                    <li>✅ Price: <strong><?= htmlspecialchars($planData['price']) ?>/month</strong></li>
         </div>
 
         <form method="POST" action="order.php">
             <input type="hidden" name="plan" value="<?= htmlspecialchars($selectedPlan) ?>">
             <div class="form-group">
-                <label>Server name</label>
-                <input type="text" name="server_name" placeholder="Ex: RustClan01">
+                <label data-i18n="order.serverName">Server name</label>
+                <input type="text" name="server_name" placeholder="Ex: RustClan01" data-i18n-placeholder="order.serverName.placeholder">
             </div>
-            <button type="submit" class="btn-submit">Place order</button>
-        </form>
-
+            <button type="submit" class="btn-submit" data-i18n="order.submit">Place order</button>
         <div class="form-link" style="margin-top:1rem;">
             <a href="dashboard.php">Back to Dashboard</a>
         </div>

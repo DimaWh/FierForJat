@@ -90,21 +90,26 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $postAction) {
 <nav class="navbar">
     <a href="index.php" class="nav-logo">🔥 FierForjat</a>
     <ul class="nav-links">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="index.php#plans">Plans</a></li>
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="index.php" data-i18n="home">Home</a></li>
+        <li><a href="index.php#plans" data-i18n="plans">Plans</a></li>
+        <li><a href="contact.php" data-i18n="contact">Contact</a></li>
+        <li><a href="logout.php" data-i18n="logout">Logout</a></li>
     </ul>
     <div class="nav-controls">
         <button id="themeToggle" class="theme-toggle">🌙</button>
+        <select id="langSelect" class="lang-toggle" aria-label="Site language">
+            <option value="en">EN</option>
+            <option value="ro">RO</option>
+            <option value="ru">RU</option>
+        </select>
         <button id="hamburger" class="hamburger">☰</button>
     </div>
 </nav>
 
 <div class="dashboard">
     <div class="dashboard-header">
-        <h1>Dashboard</h1>
-        <span style="color:var(--text2);">👋 <?= htmlspecialchars($user['username']) ?></span>
+        <h1 data-i18n="dashboard.header">Dashboard</h1>
+        <span style="color:var(--text2);" data-i18n="dashboard.greeting">👋</span> <?= htmlspecialchars($user['username']) ?>
     </div>
 
     <?php if($msg): ?>
@@ -114,46 +119,46 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $postAction) {
     <div class="dash-cards">
         <div class="dash-card">
             <div class="card-icon">👤</div>
-            <h3>Username</h3>
+            <h3 data-i18n="dashboard.card.username">Username</h3>
             <div class="value small"><?= htmlspecialchars($user['username']) ?></div>
         </div>
         <div class="dash-card">
             <div class="card-icon">📧</div>
-            <h3>Email</h3>
+            <h3 data-i18n="dashboard.card.email">Email</h3>
             <div class="value small"><?= htmlspecialchars($user['email']) ?></div>
         </div>
         <div class="dash-card">
             <div class="card-icon">🖥️</div>
-            <h3>Active servers</h3>
+            <h3 data-i18n="dashboard.card.servers">Active servers</h3>
             <div class="value"><?= count($servers) ?></div>
         </div>
         <div class="dash-card">
             <div class="card-icon">✅</div>
-            <h3>Status</h3>
-            <div class="value" style="color:#5fca5f;font-size:1.2rem;">Online</div>
+            <h3 data-i18n="dashboard.card.status">Status</h3>
+            <div class="value" style="color:#5fca5f;font-size:1.2rem;" data-i18n="dashboard.status.online">Online</div>
         </div>
     </div>
 
     <div class="dash-section">
-        <h2>🖥️ My Servers</h2>
+        <h2 data-i18n="dashboard.servers">🖥️ My Servers</h2>
         <div class="terminal-panel">
             <div class="terminal-header">
                 <span>></span>
                 <div>
-                    <div class="terminal-title">CMD Dashboard</div>
-                    <div class="terminal-subtitle">Type <code>help</code> for quick commands.</div>
+                    <div class="terminal-title" data-i18n="dashboard.terminal.title">CMD Dashboard</div>
+                    <div class="terminal-subtitle" data-i18n="dashboard.terminal.subtitle">Type <code>help</code> for quick commands.</div>
                 </div>
             </div>
             <div id="terminalOutput" class="terminal-output"></div>
             <form id="terminalForm" class="terminal-form" onsubmit="return handleTerminalCommand(event)">
                 <span class="prompt">></span>
-                <input id="terminalInput" type="text" autocomplete="off" placeholder="help, status, servers, details <id>, clear">
+                <input id="terminalInput" type="text" autocomplete="off" placeholder="help, status, servers, details <id>, clear" data-i18n-placeholder="dashboard.terminal.placeholder">
             </form>
         </div>
         <?php if(empty($servers)): ?>
             <div class="server-empty">
-                <p>You have no active servers.</p>
-                <a href="order.php" class="btn-plan" style="display:inline-block;width:auto;padding:0.6rem 2rem;">Buy a server</a>
+                <p data-i18n="dashboard.empty">You have no active servers.</p>
+                <a href="order.php" class="btn-plan" style="display:inline-block;width:auto;padding:0.6rem 2rem;" data-i18n="dashboard.buy">Buy a server</a>
             </div>
         <?php else: ?>
             <?php foreach($servers as $server): ?>
@@ -168,17 +173,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && $postAction) {
                     <form class="rename-form" id="rename-<?= $server['id'] ?>" method="POST">
                         <input type="hidden" name="action" value="rename">
                         <input type="hidden" name="server_id" value="<?= $server['id'] ?>">
-                        <input type="text" name="new_name" placeholder="New name..." value="<?= htmlspecialchars($server['name'] ?? '') ?>">
-                        <button type="submit" class="btn-sm">Save</button>
-                        <button type="button" class="btn-sm" onclick="toggleRename('<?= $server['id'] ?>')">Cancel</button>
+                        <input type="text" name="new_name" placeholder="New name..." value="<?= htmlspecialchars($server['name'] ?? '') ?>" data-i18n-placeholder="dashboard.rename">
+                        <button type="submit" class="btn-sm" data-i18n="dashboard.save">Save</button>
+                        <button type="button" class="btn-sm" onclick="toggleRename('<?= $server['id'] ?>')" data-i18n="dashboard.cancel">Cancel</button>
                     </form>
                 </div>
                 <div class="server-actions">
-                    <button class="btn-sm" onclick="toggleRename('<?= $server['id'] ?>')">Rename</button>
+                    <button class="btn-sm" onclick="toggleRename('<?= $server['id'] ?>')" data-i18n="dashboard.rename">Rename</button>
                     <form method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this server?')">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="server_id" value="<?= $server['id'] ?>">
-                        <button type="submit" class="btn-sm danger">Delete</button>
+                        <button type="submit" class="btn-sm danger" data-i18n="dashboard.delete">Delete</button>
                     </form>
                 </div>
             </div>
