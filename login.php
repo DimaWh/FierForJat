@@ -32,40 +32,44 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <nav class="navbar">
     <a href="index.php" class="nav-logo">🔥 FierForjat</a>
     <ul class="nav-links">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="index.php#plans">Plans</a></li>
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php" class="btn-nav">Register</a></li>
-    </ul>
-    <button id="themeToggle" class="theme-toggle">🌙</button></nav>
+            <li><a href="index.php" data-i18n="home">Home</a></li>
+            <li><a href="index.php#plans" data-i18n="plans">Plans</a></li>
+            <li><a href="contact.php" data-i18n="contact">Contact</a></li>
+            <li><a href="login.php" data-i18n="login">Login</a></li>
+            <li><a href="register.php" class="btn-nav" data-i18n="register">Register</a></li>
+        </ul>
+        <div class="nav-controls">
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+            <select id="langSelect" class="lang-toggle" aria-label="Site language">
+                <option value="en">EN</option>
+                <option value="ro">RO</option>
+                <option value="ru">RU</option>
+            </select>
+        </div>
+    </nav>
 
 <div class="form-page">
     <div class="form-box">
         <div class="form-logo">🔥</div>
-        <h2>Login</h2>
-        <p class="form-subtitle">Welcome back!</p>
-
-        <?php if($error): ?>
-            <div class="msg error"><?= htmlspecialchars($error) ?></div>
-        <?php endif; ?>
+        <h2 data-i18n="login.title">Login</h2>
+        <p class="form-subtitle" data-i18n="login.subtitle">Welcome back!</p>
 
         <form method="POST" action="login.php">
             <div class="form-group">
-                <label>EMAIL</label>
-                <input type="email" name="email" placeholder="email@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                <label data-i18n="login.email">EMAIL</label>
+                <input type="email" name="email" placeholder="email@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required data-i18n-placeholder="login.email">
             </div>
             <div class="form-group">
-                <label>PASSWORD</label>
+                <label data-i18n="login.password">PASSWORD</label>
                 <div class="input-wrapper">
-                    <input type="password" name="password" id="passInput" placeholder="••••••••" required>
+                    <input type="password" name="password" id="passInput" placeholder="••••••••" required data-i18n-placeholder="login.password.placeholder">
                     <button type="button" class="toggle-pass" onclick="togglePass()">👁️</button>
                 </div>
             </div>
-            <button type="submit" class="btn-submit">LOGIN</button>
+            <button type="submit" class="btn-submit" data-i18n="login.submit">LOGIN</button>
         </form>
 
-        <div class="form-link">Don't have an account? <a href="register.php">Register</a></div>
+        <div class="form-link"><span data-i18n="login.noAccount">Don't have an account? </span><a href="register.php" data-i18n="login.register">Register</a></div>
     </div>
 </div>
 
